@@ -3,8 +3,14 @@ import psycopg2
 
 table_drop = "DROP TABLE IF EXISTS songplays"
 
-table_create = """
-    CREATE TABLE IF NOT EXISTS xxx (
+table_create_actor = """
+    CREATE TABLE IF NOT EXISTS actor (
+        id serial PRIMARY KEY,
+        login VARCHAR (200) UNIQUE NOT NULL,
+        display_login VARCHAR (200) UNIQUE NOT NULL,
+        gravatar_id serial,
+        url VARCHAR (255),
+        
     )
 """
 

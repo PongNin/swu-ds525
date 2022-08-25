@@ -51,7 +51,7 @@ def main():
     )
     cur = conn.cursor()
 
-    process(cur, conn, filepath="../data")
+    process(cur, conn, filepath="../Data")
 
     conn.close()
 
