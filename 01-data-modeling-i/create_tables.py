@@ -9,7 +9,7 @@ table_drop_orgs = "DROP TABLE IF EXISTS orgs"
 
 table_create_actor = """
     CREATE TABLE IF NOT EXISTS actor (
-        actor_id INT PRIMARY KEY,
+        actor_id BIGINT PRIMARY KEY,
         login VARCHAR (200) UNIQUE NOT NULL,
         display_login VARCHAR (200) UNIQUE NOT NULL,
         gravatar_id VARCHAR (200),
@@ -19,14 +19,14 @@ table_create_actor = """
 """
 table_create_repos = """
     CREATE TABLE IF NOT EXISTS repo (
-        repo_id INT PRIMARY KEY,
+        repo_id BIGINT PRIMARY KEY,
         name VARCHAR (255) UNIQUE NOT NULL,
         url VARCHAR (255)
     )
 """
 table_create_orgs = """
     CREATE TABLE IF NOT EXISTS org (
-        orgs_id INT PRIMARY KEY,
+        orgs_id BIGINT PRIMARY KEY,
         login VARCHAR (255) UNIQUE NOT NULL,
         gravatar_id VARCHAR (225),
         url VARCHAR (255),
@@ -35,14 +35,13 @@ table_create_orgs = """
 """
 table_create_events = """
     CREATE TABLE IF NOT EXISTS events (
-        events_id INT UNIQUE NOT NULL,
-        actor_id INT UNIQUE NOT NULL,
-        repo_id INT UNIQUE NOT NULL,
+        events_id BIGINT PRIMARY KEY,
+        actor_id BIGINT NOT NULL,
+        repo_id BIGINT NOT NULL,
         type VARCHAR (200) NOT NULL,
         public BOOLEAN NOT NULL,
         created_at TIMESTAMP NOT NULL,
-        orgs_id INT UNIQUE NOT NULL,
-        PRIMARY KEY (actor_id,repo_id,orgs_id),
+        orgs_id BIGINT,
         FOREIGN KEY (actor_id) REFERENCES actor (actor_id),
         FOREIGN KEY (repo_id) REFERENCES repo (repo_id),
         FOREIGN KEY (orgs_id) REFERENCES org (orgs_id)

@@ -25,10 +25,8 @@ table_insert_orgs = """
     ON CONFLICT (orgs_id) DO NOTHING
 """
 table_insert_events = """
-    INSERT INTO events (
-        events_id,actor_id,repo_id,type,public,created_at,orgs_id
-    ) VALUES (%s,%s,%s,%s,%s,%s,%s)
-    ON CONFLICT (orgs_id) DO NOTHING
+    INSERT INTO events VALUES (%s,%s,%s,%s,%s,%s,%s)
+    ON CONFLICT (events_id) DO NOTHING
 """
 
 
@@ -109,15 +107,20 @@ def process(cur, conn, filepath):
                 
                 # Insert data into tables_events
                 try:
-                    col_events = each["id"],each['actor'][res_actor[0]],each['repo'][res_repo[0]],each["type"],each["public"],each["created_at"],each['org'][res_orgs[0]]
+                    col_events = each["id"],each['actor']["id"],each['repo']["id"],each["type"],each["public"],each["created_at"],each['org']["id"]
                     cur.execute(table_insert_events,col_events)
                     conn.commit()
                 except:
-                    col_events = each["id"],each['actor'][res_actor[0]],each['repo'][res_repo[0]],each["type"],each["public"],each["created_at"],"NULL"
-                    cur.execute(table_insert_events,col_events)
+                    table_insert_events2 = """
+                        INSERT INTO events (events_id,actor_id,repo_id,type,public,created_at) VALUES (%s,%s,%s,%s,%s,%s)
+                        ON CONFLICT (events_id) DO NOTHING
+                        """
+                    col_events = each["id"],each['actor']["id"],each['repo']["id"],each["type"],each["public"],each["created_at"],
+                    cur.execute(table_insert_events2,col_events)
                     conn.commit()
+                
                     
-
+#col_events = each["id"],each['actor'][res_actor[0]],each['repo'][res_repo[0]],each["type"],each["public"],each["created_at"],each['org'][res_orgs[0]]
 
 def main():
     conn = psycopg2.connect(
