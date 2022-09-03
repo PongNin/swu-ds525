@@ -39,3 +39,6 @@ To shutdown, press Ctrl+C and run:
 ```sh
 docker-compose down
 ```
+
+## Table Diagram
+![er](./Data-modeling-ii.jpg)
