@@ -18,7 +18,6 @@ table_create_events = """
         public boolean,
         created_at timestamp,
         actor_name text,
-        actor_visit int,
         PRIMARY KEY (
             (created_at,
             id),
