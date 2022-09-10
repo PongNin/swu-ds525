@@ -1,7 +1,13 @@
 # Data Modeling II
 
-## Getting Started
+## Project implementation instruction
 
+## Get started
+```sh
+$ cd 02-data-modeling-ii
+```
+
+## create visual environment & install required libraries
 ```sh
 python -m venv ENV
 source ENV/bin/activate
@@ -33,3 +39,6 @@ To shutdown, press Ctrl+C and run:
 ```sh
 docker-compose down
 ```
+
+## Table Diagram
+![er](./Data-modeling-ii.jpg)
