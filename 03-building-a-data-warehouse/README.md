@@ -23,6 +23,6 @@ pip install -r requirements.txt
 ```sh
 Step:1
 Crate a redshift claster
-![DataModel](Doc/03-building-dwh.png)
-![er](./Screenshot 2022-09-17 192425.png)
+![er](./Picture%20ref/Screenshot%202022-09-17%192425.png)
+<br>
 
