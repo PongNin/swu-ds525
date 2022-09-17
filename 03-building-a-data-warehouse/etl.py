@@ -2,8 +2,11 @@ import psycopg2
 
 
 drop_table_queries = [
+    "DROP TABLE IF EXISTS staging_events",
     "DROP TABLE IF EXISTS events",
-
+    "DROP TABLE IF EXISTS actors",
+    "DROP TABLE IF EXISTS repo",
+    "DROP TABLE IF EXISTS org",
 ]
 
 create_table_queries = [
@@ -11,16 +14,41 @@ create_table_queries = [
     CREATE TABLE IF NOT EXISTS staging_events (
         id text,
         type text,
-        actor text,
-        repo text,
+        actor_name text,
+        actor_id text,
+        actor_url text,
+        org_id text,
+        org_login text,
+        repo_id text,
+        repo_name text,
         created_at text
     )
     """,
     """
     CREATE TABLE IF NOT EXISTS events (
-        id text
+        id text,
+        type text
     )
     """,
+    """
+    CREATE TABLE IF NOT EXISTS actors (
+        actor_id text,
+        actor_name text,
+        actor_url text
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS org (
+        org_id text,
+        org_login text
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS repo (
+        repo_id text,
+        repo_name text
+    )
+    """
 ]
 
 copy_table_queries = [
@@ -36,14 +64,55 @@ insert_table_queries = [
     """
     INSERT INTO
       events (
-        id
+        id,
+        type
       )
     SELECT
-      DISTINCT id
+      DISTINCT id,type
     FROM
       staging_events
     WHERE
       id NOT IN (SELECT DISTINCT id FROM events)
+    """,
+    """
+    INSERT INTO
+      actors (
+        actor_name,
+        actor_id,
+        actor_url
+      )
+    SELECT
+      DISTINCT actor_name, actor_id, actor_url
+    FROM
+      staging_events
+    WHERE
+      actor_id NOT IN (SELECT DISTINCT actor_id FROM actors)
+    """,
+    """
+    INSERT INTO
+      org (
+        org_id,
+        org_login
+      )
+    SELECT
+      DISTINCT org_id, org_login
+    FROM
+      staging_events
+    WHERE
+      org_id NOT IN (SELECT DISTINCT org_id FROM org)
+    """,
+    """
+    INSERT INTO
+      repo (
+        repo_id,
+        repo_name
+      )
+    SELECT
+      DISTINCT repo_id, repo_name
+    FROM
+      staging_events
+    WHERE
+      repo_id NOT IN (SELECT DISTINCT repo_id FROM repo)
     """,
 ]
 
