@@ -19,5 +19,5 @@ pip install -r requirements.txt
 ```sh
 Step:1
 Crate a redshift claster
-![er](./workspace/swu-ds525/03-building-a-data-warehouse/Screenshot 2022-09-17 192425.png)
+![er](./Screenshot 2022-09-17 192425.png)
 
