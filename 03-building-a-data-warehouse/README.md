@@ -1,7 +1,7 @@
 # Data Modeling III Building a Data Warehouse
 
 ## Data model
-![er](./Screenshot 2022-09-17 201259.png)
+![er](./Picture%20ref/Screenshot%202022-09-17%20201259.png)
 <br>
 
 ## Project implementation instruction
