@@ -24,6 +24,6 @@ pip install -r requirements.txt
 Step:1
 Crate a redshift claster
 
-![Redshift](./Picture ref/Screenshot 2022-09-17 192425.png)
+![Redshift](Picture ref/Screenshot 2022-09-17 192425.png)
 <br>
 
