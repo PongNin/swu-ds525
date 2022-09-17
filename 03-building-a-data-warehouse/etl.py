@@ -3,7 +3,9 @@ import psycopg2
 
 drop_table_queries = [
     "DROP TABLE IF EXISTS events",
+
 ]
+
 create_table_queries = [
     """
     CREATE TABLE IF NOT EXISTS staging_events (
@@ -16,18 +18,20 @@ create_table_queries = [
     """,
     """
     CREATE TABLE IF NOT EXISTS events (
-        id int
+        id text
     )
     """,
 ]
+
 copy_table_queries = [
     """
-    COPY staging_events FROM 's3://zkan-swu-labs/github_events_01.json'
-    CREDENTIALS 'aws_iam_role=arn:aws:iam::377290081649:role/LabRole'
-    JSON 's3://zkan-swu-labs/events_json_path.json'
+    COPY staging_events FROM 's3://ds525-github-event/github_events_01.json'
+    CREDENTIALS 'aws_iam_role=arn:aws:iam::766365816458:role/LabRole'
+    JSON 's3://ds525-github-event/events_json_path.json'
     REGION 'us-east-1'
     """,
 ]
+
 insert_table_queries = [
     """
     INSERT INTO
@@ -35,7 +39,7 @@ insert_table_queries = [
         id
       )
     SELECT
-      DISTINCT id,
+      DISTINCT id
     FROM
       staging_events
     WHERE
@@ -69,19 +73,25 @@ def insert_tables(cur, conn):
 
 
 def main():
-    host = ""
-    dbname = ""
-    user = ""
-    password = ""
-    port = ""
+    host = "redshift-cluster-1.ce1ofdjly7ll.us-east-1.redshift.amazonaws.com"
+    dbname = "dev"
+    user = "awsuser"
+    password = "Ixaajph7"
+    port = "5439"
     conn_str = f"host={host} dbname={dbname} user={user} password={password} port={port}"
     conn = psycopg2.connect(conn_str)
     cur = conn.cursor()
 
-    # drop_tables(cur, conn)
-    # create_tables(cur, conn)
-    # load_tables(cur, conn)
-    # insert_tables(cur, conn)
+    drop_tables(cur, conn)
+    create_tables(cur, conn)
+    load_staging_tables(cur, conn)
+    insert_tables(cur, conn)
+
+    query = "select * from events"
+    cur.execute(query)
+    records = cur.fetchall()
+    for row in records:
+        print(row)
 
     conn.close()
 
