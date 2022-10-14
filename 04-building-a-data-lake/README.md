@@ -41,7 +41,7 @@ docker-compose up
 <br>
 
 ## Result after merging table
-![er](./Picture%20ref/Screenshot%202022-10-14%20233815.png)
+![er](./Picture%20ref/Screenshot%202022-10-14%20235815.png)
 <br>
 
 ## To shutdown
