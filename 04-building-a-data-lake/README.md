@@ -1,7 +1,7 @@
 # Building a Data Lake
 
 ## Data model
-![er](./Picture%20ref/Screenshot%202022-09-17%20201259.png)
+![er](./Picture%20ref/Screenshot%202022-09-17%20003753.png)
 <br>
 
 ## Project implementation instruction
@@ -40,6 +40,9 @@ docker-compose up
 ### events : [events](https://github.com/pongthanin/swu-ds525/tree/main/04-building-a-data-lake/event)
 <br>
 
+## Result after merging table
+![er](./Picture%20ref/Screenshot%202022-10-14%20233815.png)
+<br>
 
 ## To shutdown
 
