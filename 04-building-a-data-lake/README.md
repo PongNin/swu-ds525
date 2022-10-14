@@ -31,13 +31,13 @@ docker-compose up
 
 ## Chcek the cleaned output data in folders
 
-### actors : [actors](https://github.com/chin-lertvipada/swu-ds525/tree/main/04-building-a-data-lake/actors)
+### actors : [actors](https://github.com/pongthanin/swu-ds525/tree/main/04-building-a-data-lake/actors)
 
-### repos : [repos](https://github.com/chin-lertvipada/swu-ds525/tree/main/04-building-a-data-lake/repos)
+### repos : [repos](https://github.com/pongthanin/swu-ds525/tree/main/04-building-a-data-lake/repo)
 
-### orgs : [orgs](https://github.com/chin-lertvipada/swu-ds525/tree/main/04-building-a-data-lake/orgs)
+### orgs : [orgs](https://github.com/pongthanin/swu-ds525/tree/main/04-building-a-data-lake/org)
 
-### events : [events](https://github.com/chin-lertvipada/swu-ds525/tree/main/04-building-a-data-lake/events)
+### events : [events](https://github.com/pongthanin/swu-ds525/tree/main/04-building-a-data-lake/event)
 <br>
 
 
