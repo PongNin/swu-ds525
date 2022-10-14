@@ -1,7 +1,7 @@
 # Building a Data Lake
 
 ## Data model
-![er](./Picture%20ref/Screenshot%202022-09-17%20003753.png)
+![er](./Picture%20ref/Screenshot%202022-10-15%20003753.png)
 <br>
 
 ## Project implementation instruction
