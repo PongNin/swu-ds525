@@ -31,27 +31,71 @@ def _create_tables():
     conn = hook.get_conn()
     cur = conn.cursor()
 
-    table_create_actors = """
-        CREATE TABLE IF NOT EXISTS actors (
-            id int,
-            login text,
-            PRIMARY KEY(id)
+    table_create_actor = """
+        CREATE TABLE IF NOT EXISTS actor (
+            actor_id BIGINT PRIMARY KEY,
+            login VARCHAR (200) UNIQUE NOT NULL,
+            display_login VARCHAR (200) UNIQUE NOT NULL,
+            gravatar_id VARCHAR (200),
+            url VARCHAR (255),
+            avatar_url VARCHAR (255)
+        )
+    """
+    table_create_repos = """
+        CREATE TABLE IF NOT EXISTS repo (
+            repo_id BIGINT PRIMARY KEY,
+            name VARCHAR (255) UNIQUE NOT NULL,
+            url VARCHAR (255)
+        )
+    """
+    table_create_orgs = """
+        CREATE TABLE IF NOT EXISTS org (
+            orgs_id BIGINT PRIMARY KEY,
+            login VARCHAR (255) UNIQUE NOT NULL,
+            gravatar_id VARCHAR (225),
+            url VARCHAR (255),
+            avatar_url VARCHAR (255)        
         )
     """
     table_create_events = """
         CREATE TABLE IF NOT EXISTS events (
-            id text,
-            type text,
-            actor_id int,
-            PRIMARY KEY(id),
-            CONSTRAINT fk_actor FOREIGN KEY(actor_id) REFERENCES actors(id)
+            events_id BIGINT PRIMARY KEY,
+            actor_id BIGINT NOT NULL,
+            repo_id BIGINT NOT NULL,
+            type VARCHAR (200) NOT NULL,
+            public BOOLEAN NOT NULL,
+            created_at TIMESTAMP NOT NULL,
+            orgs_id BIGINT,
+            FOREIGN KEY (actor_id) REFERENCES actor (actor_id),
+            FOREIGN KEY (repo_id) REFERENCES repo (repo_id),
+            FOREIGN KEY (orgs_id) REFERENCES org (orgs_id)
         )
     """
+
     create_table_queries = [
-        table_create_actors,
-        table_create_events,
+        table_create_actor,table_create_repos,table_create_orgs,table_create_events
     ]
+
     for query in create_table_queries:
+        cur.execute(query)
+        conn.commit()
+
+
+def _drop_tables():
+    hook = PostgresHook(postgres_conn_id="my_postgres")
+    conn = hook.get_conn()
+    cur = conn.cursor()
+
+    table_drop_events = "DROP TABLE IF EXISTS events"
+    table_drop_actor = "DROP TABLE IF EXISTS actor"
+    table_drop_repos = "DROP TABLE IF EXISTS repo"
+    table_drop_orgs = "DROP TABLE IF EXISTS orgs"
+
+    drop_table_queries = [
+    table_drop_events,table_drop_actor,table_drop_repos,table_drop_orgs
+    ]
+
+    for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
@@ -136,15 +180,18 @@ with DAG(
             "filepath": "/opt/airflow/dags/data",
         }
     )
-
-    create_tables = PythonOperator(
-        task_id="create_tables",
-        python_callable=_create_tables,
-    )
-    
     process = PythonOperator(
         task_id="process",
         python_callable=_process,
     )
+    create_tables = PythonOperator(
+        task_id="create_tables",
+        python_callable=_create_tables,
+    )
 
-    [get_files, create_tables] >> process
+    drop_tables = PythonOperator(
+        task_id = "drop_tables",
+        python_callable =_drop_tables,
+    )
+
+    get_files >> drop_tables >> create_tables >> process
