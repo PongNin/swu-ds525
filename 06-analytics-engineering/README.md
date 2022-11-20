@@ -81,5 +81,5 @@ dbt docs serve
 
 ## Final Lineage Graph
 
-![er](./Picture%20ref/Screenshot%202022-11-20%20180213.png)
+![er](./picture%20ref/Screenshot%202022-11-20%20180213.png)
 <br>
