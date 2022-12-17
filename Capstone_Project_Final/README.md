@@ -51,7 +51,7 @@ source ENV/bin/activate
 pip install -r requirements.txt
 ```
 
-## Start python environment
+## Start  environment
 
 ```sh
 docker-compose up
