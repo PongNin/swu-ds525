@@ -70,7 +70,7 @@ docker-compose up
 
 ### 2. Upload raw data into S3 bucket
 
-![er](./Picture%20ref/Screenshot%202022-12-17%20130251.png)
+![er](./Picture%20ref/Screenshot%202022-12-17%20130228.png)
 <br>
 
 Noted: From assumption, normally raw data (All tables) will be manually uploaded to S3 on monthly basis 
@@ -103,6 +103,9 @@ Target: To transform data from 8 tables into a final table that contains with al
 <br>
 
 *Transform data into "final_table" before uploading result back to S3 by partition it with "year"
+
+![er](./Picture%20ref/Screenshot%202022-12-17%20130251.png)
+<br>
 
 Code: [python_code_for_create_final_table](https://github.com/pongthanin/swu-ds525/blob/main/Capstone_Project_Final/etl_datalake_S3.ipynb)
 <br>
