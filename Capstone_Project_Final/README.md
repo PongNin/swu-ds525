@@ -79,8 +79,6 @@ Noted: From assumption, normally raw data (All tables) will be manually uploaded
 ### 3. Get access key from AWS
 
 Retrieve credential thru AWS terminal
-![er](./Picture%20ref/Screenshot%202022-12-18%20201539.png)
-<br>
 
 ```sh
 cat ~/.aws/credentials
@@ -89,6 +87,9 @@ Then, copy these access key (Used to link with S3 and Redshift)
 1) aws_access_key_id 
 2) aws_secret_access_key
 3) aws_session_token
+
+![er](./Picture%20ref/Screenshot%202022-12-18%20201539.png)
+<br>
 
 
 ## Project implementation - Transformation
