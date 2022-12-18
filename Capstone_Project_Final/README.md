@@ -1,6 +1,6 @@
 # Final Capstone project
 
-# Documentation: [link](https://github.com/pongthanin/swu-ds525/blob/main/Capstone_Project_Final/Document/Capstone%20project_%20Brazilian%20E-Commerce%20sales%20analysis%20-%20Google%20Docs.pdf)
+## Documentation: [link](https://github.com/pongthanin/swu-ds525/blob/main/Capstone_Project_Final/Document/Capstone%20project_%20Brazilian%20E-Commerce%20sales%20analysis%20-%20Google%20Docs.pdf)
 
 ## Dataset
 
