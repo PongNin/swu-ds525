@@ -35,9 +35,9 @@ create_table_queries = [
 
 # cat ~/.aws/credentials
 # https://stackoverflow.com/questions/15261743/how-to-copy-csv-data-file-to-amazon-redshift
-AWS_ACCESS_KEY_ID = "ASIA3E3XWK2FOKCZU5F3"
-AWS_SECRET_ACCESS_KEY = "PKlu+Tals6z0WYJBy8Uv7E+bNuw7IJmmaEmHdgRq"
-AWS_SESSION_TOKEN = "FwoGZXIvYXdzEP3//////////wEaDBl2aCf3Tj310rbGvCLQAUhme5fT90ZmTxKeI4fPh7LV/omyHX7rGA6eCI9uO/AMjrD+dvzneuohDg4LEaOM4EqyFd21+IWymLqQMLQqJfAUpQQzp9fZ7h3DH1mZYpXjPfcftPXK/7RXdJuZ5IQZdjp43UM6GqxGrC7dTh4PAAJSpXyOBz0RM751djgJo73kg3uyYTBYgxxKsl68I/GP3wE61j3I1dloLxrpFyh+hFcE+Tg7UX3QZ9zcpyUSvuzQrbqGQ66JG7iX5JImm30wS4Xbkl/an1kvHTfUNAZDJOEoy/L0nAYyLdOZtAZdBSTlhWELvGwcNT9zMK0PjM7Yt6TIAU7JwmLpE2lI3iL6nQ7nPOQKug=="
+AWS_ACCESS_KEY_ID = "ASIA3E3XWK2FKZHSOZWO"
+AWS_SECRET_ACCESS_KEY = "MLqZizgJ3kVwrAuNrSIAhxf3OD1sn4cr4XeKRd1y"
+AWS_SESSION_TOKEN = "FwoGZXIvYXdzEBgaDFKkkGGSWB1TrRSW4CLQAWmcZmYhnTtFLGIxdCDWGshyBOv6vqaYiC5oCTnU6PZ8SvwBKkMJap7HnvIAEH+KCyAAqVnAM9MhOFRIVUhvxwZGywoLmW242L1tR6T0aJj+FqbRpK5TBQLSjR30GzJLx1+RyPhtAT2dL0TDr1ltgBd1yWICkrMtbwfq5rMu9MzYKczWvHCp2xM7UvYTupO8xhjwLi64pmLULPTsiwDIlxZsv1e8NXJzjHvF92xnDO44wkY93dsuZZO/ujMbbboy60n+c0zEgyEBWeYL3v0sxGwo7e36nAYyLc1Xmb8E14O3MupTnBLTjHP4Jf4C+VHuhumYjId8BtmuPyCazzUP7MaTys+/5w=="
 
 copy_table_queries = [
     """
@@ -98,7 +98,7 @@ def _insert_dwh_tables():
 
 with DAG(
     'Capstone',
-    start_date = timezone.datetime(2022, 12, 1), # Start of the flow
+    start_date = timezone.datetime(2017, 2, 1), # Start of the flow
     schedule = '@monthly', # Run once a month at midnight of the first day of the month
     tags = ['capstone'],
     catchup = False, # No need to catchup the missing run since start_date
