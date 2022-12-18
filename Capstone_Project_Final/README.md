@@ -1,6 +1,6 @@
 # Final Capstone project
 
-# Documentation
+# Documentation: [link](https://github.com/pongthanin/swu-ds525/blob/main/Capstone_Project_Final/Document/Capstone%20project_%20Brazilian%20E-Commerce%20sales%20analysis%20-%20Google%20Docs.pdf)
 
 ## Dataset
 
@@ -11,7 +11,7 @@
 ![er](./Picture%20ref/HRhd2Y0.png)
 <br>
 
-## Problem & Target
+## Questions
 Mainly foucsing on selling report which we would like to asking the following questions:
 1. How is the total sales amount compare in term of product catagories and each state
 2. Average sales per orders in each state 
@@ -183,3 +183,17 @@ select * from final_table;
 
 - Presentation: [slide](https://www.canva.com/design/DAFVGbsjpfY/5PK9Jd5Jx7bR1qdtmyfY-Q/view?utm_content=DAFVGbsjpfY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 <br>
+
+__________
+<br>
+
+## Shutdown steps
+##### 1. Stop services by shutdown Docker:
+```sh
+$ docker-compose down
+```
+
+##### 2. Deactivate the virtual environment:
+```sh
+$ deactivate
+```
