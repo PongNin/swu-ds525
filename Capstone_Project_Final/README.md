@@ -184,6 +184,8 @@ select * from final_table;
 - Presentation: [slide](https://www.canva.com/design/DAFVGbsjpfY/5PK9Jd5Jx7bR1qdtmyfY-Q/view?utm_content=DAFVGbsjpfY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 <br>
 
+- Video presentation: [Youtube_link] (https://youtu.be/5I-es4GruOw)
+<br>
 __________
 <br>
 
